@@ -1,0 +1,4 @@
+- Fetch all yellow dates elements
+- Make an array with the ids
+- Foreach id fetch seats
+- Convert epoch time to real date
