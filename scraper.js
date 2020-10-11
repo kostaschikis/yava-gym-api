@@ -18,10 +18,10 @@ async function scrapeSeats(url) {
   await page.click('[type=submit]')
 
   // Wait
-  await page.waitForTimeout(3000)
+  await page.waitForTimeout(2000)
 
   // Go to gym page
-  await page.goto('https://yava.services/training/trainers/yava-aigaleo?id_service=131&id_city=16')
+  await page.goto('https://yava.services/training/trainers/yava-aigaleo')
 
   // Click on day
   await page.click('td#vapday1602450000')
@@ -32,7 +32,7 @@ async function scrapeSeats(url) {
       timeout: 5000
     });
   } catch(e) {
-    console.log("Gym is closed today")
+    console.log(e)
   }
   
   // Get some data

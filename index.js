@@ -1,8 +1,17 @@
+const express = require('express')
 const scrapSeats = require('./scraper')
 
-const main = async () => {
-  const seats = await scrapSeats('https://gymservices.yava.gr/login')
-  if (seats.length !== 0) console.log(seats) 
-}
+const app = express()
 
-main()
+app.listen(3000)
+
+app.use(express.urlencoded({ extended: true }))
+
+app.get('/', async (req, res) => {
+  const seats = await scrapSeats('https://gymservices.yava.gr/login')
+  if (seats.length !== 0) {
+    res.json(seats)
+  } else {
+    res.status(500).send({ error: 'Gym is closed' })
+  }
+})
