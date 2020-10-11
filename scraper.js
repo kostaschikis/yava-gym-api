@@ -3,7 +3,9 @@ const puppeteer = require('puppeteer')
 
 async function scrapeSeats(url) {
   // Typical Launch Stuff
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    args: ['--disable-dev-shm-usage']
+  })
   const page = await browser.newPage()
   await page.setViewport({
     width: 1920,
@@ -23,47 +25,61 @@ async function scrapeSeats(url) {
   // Go to gym page
   await page.goto('https://yava.services/training/trainers/yava-aigaleo')
 
-  // Click on day
-  await page.click('td#vapday1602450000')
+  // Get yellow dates
+  const yellowdates = await page.evaluate(() => {
+    const elements = document.querySelectorAll('.vaptdyellow')
+    const ids = Array.from(elements).map(element => element.id)
 
-  try {
-    await page.waitForSelector('.vap-timeline-block', {
-      visible: true,
-      timeout: 5000
-    });
-  } catch(e) {
-    console.log(e)
-  }
-  
-  // Get some data
-  const data = await page.evaluate(() => {
-    const times = document.querySelectorAll('div.vap-timeline-block')
-    /** 
-     * NodeList[i].dataset: DOMStringMap
-     * Converts DOMStringMap to Object 
-     * {rate: "", hour: "7", min: "0", seats: "5"}
-     */
-    const seats = Array.from(times).map(element => Object.assign({}, element.dataset))
-
-    const final = []
-
-    // Makes a new array and converts the number of people to integer
-    seats.forEach(({hour, seats}) => {
-      if(parseInt(hour) < 10) hour = `0${hour}`
-      return final.push({ hour: `${hour}:00`, people: parseInt(seats) })
-    })
-
-    return final
+    return ids
   })
 
+  const finalData = []
+
+  for (const date of yellowdates) {
+    try {
+      // Click on the date
+      await page.click(`td#${date} > a`)
+
+      // await page.waitForSelector('.vap-timeline-block', {
+      //   visible: true,
+      //   timeout: 5000
+      // });
+
+      await page.waitForTimeout(1000)
+
+      // Get the hours and the number of people for the day
+      let data = await page.evaluate(() => {
+        const times = document.querySelectorAll('div.vap-timeline-block')
+        
+        const seats = Array.from(times).map(element => Object.assign({}, element.dataset))
+        const data = []
+        // Makes a new array and converts the number of people to integer
+        seats.forEach(({hour, seats}) => {
+          if(parseInt(hour) < 10) hour = `0${hour}`
+          return data.push({ hour: `${hour}:00`, people: parseInt(seats) })
+        })
+
+        return data
+      })
+      
+      // Convert epoch time
+      let formattedDate = new Date(date.slice(6, 16) * 1000)
+      finalData.push({date: formattedDate, data: data})
+
+    } catch(e) {
+      console.log(e)
+    }
+  }
+  
   await browser.close()
 
-  return data
+  // console.log(finalData)
+  return finalData
 
 }
 
 module.exports = scrapeSeats
 
-// scrapeSeats('https://yava.services/training/')
+// scrapeSeats('https://gymservices.yava.gr/login')
 
 // scrapeSeats('https://gymservices.yava.gr/login')
