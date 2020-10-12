@@ -1,5 +1,6 @@
 require('dotenv').config()
 const puppeteer = require('puppeteer')
+const moment = require('moment');
 
 async function scrapeSeats(url) {
   // Typical Launch Stuff
@@ -63,7 +64,8 @@ async function scrapeSeats(url) {
       })
       
       // Convert epoch time
-      let formattedDate = new Date(date.slice(6, 16) * 1000)
+      let isoDate = new Date(date.slice(6, 16) * 1000)
+      let formattedDate = moment(isoDate).format('dddd MMM Do')
       finalData.push({date: formattedDate, data: data})
 
     } catch(e) {

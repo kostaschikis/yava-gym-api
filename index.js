@@ -2,8 +2,11 @@ const express = require('express')
 const scrapSeats = require('./scraper')
 
 const app = express()
+const port = 3000
 
-app.listen(3000)
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`)
+})
 
 app.use(express.urlencoded({ extended: true }))
 
