@@ -2,7 +2,7 @@ require('dotenv').config()
 const puppeteer = require('puppeteer')
 const moment = require('moment');
 
-async function scrapeSeats(url) {
+async function scrapeSeats(url, user) {
   // Typical Launch Stuff
   const browser = await puppeteer.launch({
     args: ['--disable-dev-shm-usage']
@@ -16,8 +16,8 @@ async function scrapeSeats(url) {
   await page.goto(url)
 
   // Login
-  await page.type('[name=_username]', process.env.EMAIL)
-  await page.type('[name=_password]', process.env.PASSWORD)
+  await page.type('[name=_username]', user.email)
+  await page.type('[name=_password]', user.password)
   await page.click('[type=submit]')
 
   // Wait
@@ -81,7 +81,3 @@ async function scrapeSeats(url) {
 }
 
 module.exports = scrapeSeats
-
-// scrapeSeats('https://gymservices.yava.gr/login')
-
-// scrapeSeats('https://gymservices.yava.gr/login')
