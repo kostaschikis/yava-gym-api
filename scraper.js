@@ -5,7 +5,11 @@ const moment = require('moment');
 async function scrapeSeats(url, user) {
   // Typical Launch Stuff
   const browser = await puppeteer.launch({
-    args: ['--disable-dev-shm-usage']
+    args: [
+      '--disable-dev-shm-usage',  
+      '--no-sandbox',
+      '--disable-gpu',
+    ]
   })
   const page = await browser.newPage()
   await page.setViewport({
