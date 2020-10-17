@@ -1,4 +1,3 @@
-require('dotenv').config()
 const puppeteer = require('puppeteer')
 const moment = require('moment');
 
