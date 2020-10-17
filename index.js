@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan(':remote-addr - :remote-user [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length]'))
 
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
   const user = {
     email: req.body.email,
     password: req.body.password
