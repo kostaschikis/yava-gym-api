@@ -16,14 +16,18 @@ This API uses [Puppeteer](https://github.com/puppeteer/puppeteer), a [headless](
 
 ## Getting Started
 
+### Heroku
+
+If you do not want to install and run the API locally you can always hit the **online** instance running on [Heroku](https://www.heroku.com/) at [https://yava-gym-api.herokuapp.com/](https://yava-gym-api.herokuapp.com/).
+
 ### Installation
 
 ```bash
-npm install
+$ npm install
 # To run with node
-npm run start
+$ npm run start
 # To run with nodemon
-npm run dev
+$ npm run dev
 ```
 
 ### Docker Image
@@ -31,8 +35,77 @@ npm run dev
 You can spin up a docker container with the image i've created if you are using docker.
 
 ```bash
-docker pull kostaschikis/yava-gym-api
-docker run -p 3000:3000 kostaschikis/yava-gym-api
+$ docker pull kostaschikis/yava-gym-api
+$ docker run -p 3000:3000 kostaschikis/yava-gym-api
 ```
 
 ## Usage
+
+> ⚠ You need a **YAVA360 account** in order to use the API
+
+### Request
+
+```http
+POST https://yava-gym-api.herokuapp.com/
+```
+
+> 💭 `POST http://localhost:3000` if you are running locally
+
+#### Headers
+
+| Key | Value |
+| :--- | :--- |
+| `Content-Type` | `application/json` |
+
+#### Body
+
+Your YAVA360 account credentials
+
+```JSON
+{
+  "email": "yava360email@yava",
+  "password": "yava360password"
+}
+```
+
+### Response
+
+A JSON array of objects where every object is a day of the week.
+
+```JSON
+[
+  {
+    "date": "Thursday Oct 29th",
+    "data": [
+      {
+        "hour": "07:00",
+        "people": 15
+      },
+      {
+        "hour": "08:00",
+        "people": 15
+      },
+      {
+        "hour": "09:00",
+        "people": 18
+      },
+      {
+        "hour": "10:00",
+        "people": 20
+      },
+      {
+        "hour": "11:00",
+        "people": 13
+      },
+      ...
+    ]
+  },
+  {
+    "date": "Friday Oct 30th",
+    "data": [...]
+  },
+  {...}
+]
+```
+
+> ❗ The scraper returns only the days where **at least 1** booking is found.
