@@ -27,10 +27,10 @@ docker run -p 3000:3000 kostaschikis/yava-gym-api
 
 ## Why I Created This ?
 
-Due to Covid-19, Yava Fitness Center (the gym i go to) implemented an online platform [YAVA360](http://yava.services/) where you book some time in order to use the gym's facilities and also it has a cap on how many people can book for each hour of the day.  
+Due to Covid-19, Yava Fitness Center (the gym i go to) implemented an online platform [YAVA360](http://yava.services/) where you make a booking in order to use the gym's facilities and also has a cap on how many people can book for each hour of the day.
 
-So, i found myself wasting too much time visiting my gym's poorly designed website, searching for the best time to book and always checking for the capacity as i was trying to book when the gym had the least people.  
+So, i found myself wasting too much time visiting my gym's poorly designed website, searching for the best time to book and always checking for the capacity as i was trying to book when the gym had the least people.
 
 ## What Does it Do ?
 
-This API uses [Puppeteer](https://github.com/puppeteer/puppeteer), a [headless](https://developers.google.com/web/updates/2017/04/headless-chrome) chrome browser to scrape the [YAVA360](http://yava.services/) webpage and then exposes an API endpoint which provides information on the **gym's capacity per hour** in a **JSON**.
+This API uses [Puppeteer](https://github.com/puppeteer/puppeteer), a [headless](https://developers.google.com/web/updates/2017/04/headless-chrome) chrome browser to scrape the [YAVA360](http://yava.services/) webpage and then exposes an API endpoint which provides information on the **gym's capacity per hour** in a **JSON** format.
