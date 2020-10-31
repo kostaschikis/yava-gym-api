@@ -96,16 +96,19 @@ A JSON array of objects where every object is a day of the week.
       {
         "hour": "11:00",
         "people": 13
-      },
-      ...
+      }
     ]
   },
   {
     "date": "Friday Oct 30th",
-    "data": [...]
-  },
-  {...}
+    "data": []
+  }
 ]
 ```
 
-> ❗ The scraper returns only the days where **at least 1** booking is found.
+> ❗ The scraper returns only the days where **at least 1** booking is found, starting from the current date.
+
+## To-Do
+
+* Insert gym name into POST request body
+* Automatic user's gym detection (Maybe)
