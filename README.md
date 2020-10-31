@@ -112,3 +112,7 @@ A JSON array of objects where every object is a day of the week.
 
 * Insert gym name into POST request body
 * Automatic user's gym detection (Maybe)
+
+## License & Copyright
+
+@ Kostas Chikimtzis. Licensed under the [MIT License](https://github.com/KostasXikis/yava-gym-api/blob/documentation/LICENSE).
