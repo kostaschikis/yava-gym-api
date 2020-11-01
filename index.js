@@ -1,8 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
-const scrapSeats = require('./scraper')
-const scrapeGyms = require('./scrapeGyms')
+const scrapSeats = require('./functions/scraper')
+const scrapeGyms = require('./functions/scrapeGyms')
 
 const app = express()
 const port = process.env.PORT || 3000
