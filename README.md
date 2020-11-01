@@ -64,7 +64,8 @@ Your YAVA360 account credentials
 ```JSON
 {
   "email": "yava360email@yava",
-  "password": "yava360password"
+  "password": "yava360password",
+  "gym": "yava-gymname"
 }
 ```
 
