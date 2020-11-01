@@ -22,7 +22,7 @@ async function scrapeSeats(url, user) {
   await page.waitForTimeout(2000)
 
   // Go to gym page
-  await page.goto(`https://yava.services/training/trainers/${user.gym}`)
+  await page.goto(`https://yava.services/training/trainers/yava-${user.gym}`)
 
   // Get yellow dates
   const yellowdates = await page.evaluate(() => {

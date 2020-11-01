@@ -19,10 +19,10 @@ async function scrapeGyms() {
     const data = []
 
     for (let gym of links) {
-      let formatUrl = gym.href.substring(40) // yava-kati?city=1&id=1
+      let formatUrl = gym.href.substring(45) // yava-kati?city=1&id=1
       let gymCodeName = formatUrl.split('?')[0] // yava-kati
 
-      data.push({city: gym.innerHTML.trim(), code: gymCodeName})
+      data.push({city: gym.innerHTML.trim(), codename: gymCodeName})
     }
 
     return data

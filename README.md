@@ -65,11 +65,11 @@ Your YAVA360 account credentials
 {
   "email": "yava360email@yava",
   "password": "yava360password",
-  "gym": "yava-codename"
+  "gym": "codename"
 }
 ```
 
-> ❗ Find your yava gym's **codename** by doing a `GET` request on `https://yava-gym-api.herokuapp.com/gyms`
+> ❗ Find your gym's **codename** by doing a `GET` request on `https://yava-gym-api.herokuapp.com/gyms`
 
 ### Response
 
