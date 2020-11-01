@@ -41,9 +41,9 @@ $ docker run -p 3000:3000 kostaschikis/yava-gym-api
 
 ## Usage
 
-> ⚠ You need a **YAVA360 account** in order to use the API
-
 ### Request
+
+> ⚠ You need a **YAVA360 account** in order to use this API
 
 ```http
 POST https://yava-gym-api.herokuapp.com/
@@ -65,9 +65,11 @@ Your YAVA360 account credentials
 {
   "email": "yava360email@yava",
   "password": "yava360password",
-  "gym": "yava-gymname"
+  "gym": "yava-codename"
 }
 ```
+
+> ❗ Find your yava gym's **codename** by doing a `GET` request on `https://yava-gym-api.herokuapp.com/gyms`
 
 ### Response
 
