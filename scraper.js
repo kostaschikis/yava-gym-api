@@ -11,11 +11,6 @@ async function scrapeSeats(url, user) {
     ]
   })
   const page = await browser.newPage()
-  await page.setViewport({
-    width: 1920,
-    height: 1080,
-    deviceScaleFactor: 1,
-  });
   await page.goto(url)
 
   // Login
@@ -27,7 +22,7 @@ async function scrapeSeats(url, user) {
   await page.waitForTimeout(2000)
 
   // Go to gym page
-  await page.goto('https://yava.services/training/trainers/yava-aigaleo')
+  await page.goto(`https://yava.services/training/trainers/${user.gym}`)
 
   // Get yellow dates
   const yellowdates = await page.evaluate(() => {
@@ -43,11 +38,6 @@ async function scrapeSeats(url, user) {
     try {
       // Click on the date
       await page.click(`td#${date} > a`)
-
-      // await page.waitForSelector('.vap-timeline-block', {
-      //   visible: true,
-      //   timeout: 5000
-      // });
 
       await page.waitForTimeout(1000)
 
