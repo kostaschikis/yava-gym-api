@@ -110,7 +110,7 @@ A JSON array of objects where every object is a day of the week.
 
 ## To-Do
 
-* Insert gym name into POST request body
+* ~~Insert gym name into POST request body~~
 * Automatic user's gym detection (Maybe)
 
 ## License & Copyright
