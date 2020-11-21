@@ -2,6 +2,8 @@
 
 <h1 align="left">Yava Gym API</h1>
 
+![Workflow](https://github.com/KostasXikis/yava-gym-api/workflows/Build%20Image%20and%20Push%20to%20Docker%20Registry/badge.svg)
+
 Find the best time to go to the gym with the (unofficial) Yava API that lets you know the gym's busiest hours 💪
 
 ## Why I Created This?
