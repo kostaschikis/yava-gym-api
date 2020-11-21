@@ -17,7 +17,7 @@ jobs:
         name: Build & push Docker image
         with:
           image: kostaschikis/yava-gym-api
-          tags: actions
+          tags: latest
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
