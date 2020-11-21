@@ -35,7 +35,7 @@ $ npm run dev
 You can spin up a docker container with the image i've created if you are using docker.
 
 ```bash
-$ docker pull kostaschikis/yava-gym-api
+$ docker pull kostaschikis/yava-gym-api:latest
 $ docker run -p 3000:3000 kostaschikis/yava-gym-api
 ```
 
